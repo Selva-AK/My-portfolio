@@ -12,7 +12,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
   
     try {
       // Make the API call using fetch
-      const response = await fetch("https://formsubmit.co/selvaak008@gmail.com", {
+      const response = await fetch("https://formspree.io/f/xqazjgvo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,15 +21,31 @@ document.getElementById("contactForm").addEventListener("submit", async function
       });
   
       if (response.ok) {
-        alert("Message sent successfully!");
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Message sent successfully!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        
         // Clear the form fields
         this.reset();
       } else {
-        alert("Error sending message. Please try again.");
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: "Something went wrong, message didn't send"
+        }); 
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong. Please try again later.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: "Something went wrong. Please try again later.",
+        confirmButtonText: 'Try Again'
+      });      
     }
   });
   
