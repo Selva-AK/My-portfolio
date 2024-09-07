@@ -62,5 +62,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Adding ScrollReveal for Projects and Experience sections
     sr.reveal('.projects__container', { delay: 300 });
-    sr.reveal('.experience__container', { delay: 300 });
+    sr.reveal('.timeline__container', { delay: 300 });
+});
+
+// Get the modal and its components
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const closeModal = document.querySelector('.close');
+
+// Add event listener to all 'work__img' links
+document.querySelectorAll('.work__img').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent default anchor behavior
+        const imgSrc = this.querySelector('img').src;  // Get the image source
+        modal.style.display = 'block';  // Show the modal
+        modalImg.src = imgSrc;  // Set the modal image source
+    });
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
+});
+
+// Close the modal if clicking outside the modal content
+modal.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 });
