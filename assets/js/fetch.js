@@ -21,8 +21,35 @@ document
         },
         body: JSON.stringify(formObject),
       });
+
+      if (response.ok) {
+        // Show success message using SweetAlert
+        Swal.fire({
+          title: "Success!",
+          text: "Your message has been sent.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        // Reset the form after successful submission
+        this.reset();
+      } else {
+        // Handle error response from API
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong. Please try again.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
     } catch (error) {
       console.error("Error:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "There was an error sending your message.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   });
 
