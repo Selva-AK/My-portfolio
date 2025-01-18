@@ -534,7 +534,16 @@ h2 {
 }
 
 .work__img img:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
+}
+
+.img-label{
+  text-align: center; /* Centers the label text */
+  display: block; /* Ensures labels are displayed on their own lines */
+  color: #333; /* Sets the text color to a dark gray */
+  font-size: 1.2rem; /* Increases the font size for better readability */
+  font-weight: bold; /* Makes the label text bold */
+  margin-top: 10px; /* Adds spacing between the image and the label */
 }
 
 /* ======== The modal container ========= */
